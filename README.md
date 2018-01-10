@@ -7,25 +7,18 @@ This repo contains a simple (and incomplete) Ruby on Rails application. For your
 Getting up and running
 ----------------------
 
-Setting up your development environment has historically been a process fraught with odd installation errors and system quirks. In order to get you up and coding as quickly as possible, and in order to allow you to share your work as easily as possible, we encourage you to use a hosted development environment from Cloud 9 (http://c9.io). This means you will have your own workspace in the cloud which will handle the annoying bits of installing Ruby, the Rails framework, Git, and PostgreSQL for you, and in a consistent way across different system and operating system configurations.
-
 You will need a GitHub account if you don't already have one:
   https://github.com/join?source=header-home.
 Once that is done, view this readme on our GitHub page at:
   https://github.com/StartupInstitute/si-dev-assessment.
 and click on the 'Fork' button in the upper right corner. This will create a copy of the repo under your account.
 
-Next, you will need to sign up for a Cloud 9 account if you don't already have one:
-  https://c9.io/signup
-After you create your account, you will need to connect your Cloud 9 account to your Github account in order to pull the source code into a new workspace you will set up. Go to your Connected Services page in your Cloud 9 settings:
-  https://c9.io/account/services
-and connect your GitHub account by entering your login credentials.
+Next you will need to install ruby and rails on your computer. This is most easily done by following the instructions here: http://installrails.com/
+Make sure to install ruby version 2.3.0
 
-At this point, you will be able to set up a new workspace pulling in the code contained in your Git repo. Go to your repo listing:
-  https://c9.io/account/repos
-where you should see your forked repo called `si-dev-assessment`. Click on the `Clone to Edit` button which will take you to a new page to create a new workspace. Enter in a name (something like `{yourName}-si-dev-assessment`) and description for your application, and make note of the `Clone from Git or Mecurial URL` value; it should be something like `git@github.com:{yourGitUsername}/si-dev-assessment.git`. In the "Choose a template" section, you will want to select `Ruby`. The click `Create workspace` to create your environment, which might take a few minutes.
+Then download your version of this project from github. You can do this either by git clone(ing) from your fork or by using the link that allows you to download it as a zip file
 
-Upon the creation of your new workspace, you will be taken to an in-browser IDE that will contain a file browser on the left, a code editor in the center, and a terminal window at the bottom. In the terminal window, first run the command
+In the terminal window, first run the command
   `bundle install`
 to install the necessary libraries, including the Rails framework and the PostgreSQL Ruby library. Next, run the command
   `sudo service postgresql start`
@@ -33,9 +26,9 @@ to start the PostgreSQL database service. Finally, run the command
   `rake db:setup`
 to create the necessary databases for this application.
 
-At this point, you should be able to run your webapp! Click on the `Run Project` button at the top center of the window. You should see in the console output something like
+At this point, you should be able to run your webapp! Run `rails s` and you should see the following
 ```
-Your code is running at https://{yourAppName}-{yourC9username}.c9users.io.
+Your code is running at localhost:3000
 
 => Booting Puma
 => Rails 5.0.0 application starting in development on http://0.0.0.0:8080
@@ -47,10 +40,6 @@ Puma starting in single mode...
 * Listening on tcp://0.0.0.0:8080
 Use Ctrl-C to stop
 ```
-
-Note the url in the first line. This is a public URL and you will be able to view your application in a browser at this URL whenever your project is running. You can also click on the `Preview` button at the top center to view the application in an embedded browser within your IDE.
-
-Before going further, you may want to take a tour of some of the features that the Cloud 9 IDE offers you by clicking on the glowing grey dots scattered throughout the IDE (for example, near the 'Preview', 'Run Project', and 'Stop' buttons). And now with the setup complete, you can now get started coding yourself!
 
 
 Task 1 - Update the homepage
@@ -110,7 +99,7 @@ One way to install the library locally is to simply run
   `gem install twilio-ruby`
 However, this will need to be done every time this application is pulled down. A better way is to list this library in the list of required gems for the application, so that it and all of its dependencies get included in the installation when you run
   `bundle install`
-To complete this task, make sure twilio-ruby is added to the required gems. After installing the gem, you will need to restart your server (in the Cloud 9 IDE, 'Stop' the server and then 'Run Project' again) before you can use it.
+To complete this task, make sure twilio-ruby is added to the required gems. After installing the gem, you will need to restart your server before you can use it.
 
 For further reading into this, first take a look at the contents of the `Gemfile` file, and see this article on StackOverflow:
   http://stackoverflow.com/questions/14072880/whats-the-use-of-gemfile-in-rails
@@ -151,11 +140,11 @@ At this point you should have a working app that allows you to send and sms mess
 Be sure to push your latest code up to your GitHub repo:
   `git push origin`
 
-While it's nice to see your source code, what we'd really like is to see your app running on a server. If you've been using Cloud 9, you'll already be able to see your application in a browser by going to the app url when you have your project running. But this is really only intended for running your application in development mode, and is not how to deploy your application in a production environment. Luckily, there is another service, Heroku, that makes this easy to do. First test if you have the Heroku CLI installed by running
+While it's nice to see your source code, what we'd really like is to see your app running on a server. Heroku makes this easy to do. First test if you have the Heroku CLI installed by running
   `heroku version`.
 If you get an error, go to
   https://toolbelt.heroku.com/
-and install it. If you're using Cloud 9, you should already have this installed. Now create yourself a Heroku account, if you don't already have one:
+and install it. Now create yourself a Heroku account, if you don't already have one:
   https://signup.heroku.com/login.
 
 Now you can create an app on your Heroku account with `heroku create` and then deploy via `git push heroku master`. When that completes, you should see a message `remote: https://{your Heroku app name}.herokuapp.com/ deployed to Heroku` and you will be able to see your deployed app at `https://{your Heroku app name}.herokuapp.com/`.
