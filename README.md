@@ -10,7 +10,7 @@ Getting up and running
 You will need a GitHub account if you don't already have one:
   https://github.com/join?source=header-home.
 Once that is done, view this readme on our GitHub page at:
-  https://github.com/StartupInstitute/si-dev-assessment.
+  https://github.com/nw0428/si-dev-assessment.
 and click on the 'Fork' button in the upper right corner. This will create a copy of the repo under your account.
 
 Next you will need to install ruby and rails on your computer. This is most easily done by following the instructions here: http://installrails.com/
